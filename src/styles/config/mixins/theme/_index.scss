@@ -1,7 +1,9 @@
 @import './skin';
+@import './border';
 
 @mixin theme() {
 	@include theme-skin();
+	@include theme-border();
 
 	--scheme: dark;
 	--border-color: var(--skin-25);

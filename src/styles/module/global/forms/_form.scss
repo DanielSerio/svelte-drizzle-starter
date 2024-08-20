@@ -1,0 +1,47 @@
+.form {
+	&,
+	.body {
+		flex-direction: column;
+	}
+
+	&,
+	.body,
+	& > header,
+	& > footer {
+		display: flex;
+	}
+
+	p {
+		font-size: to-rem($font-sm);
+	}
+
+	header,
+	footer,
+	.body,
+	& > p {
+		padding: 0 to-rem($font-sm);
+	}
+
+	.body {
+		gap: to-rem($font-xs);
+	}
+
+	& > header,
+	& > footer {
+		padding: to-rem($font-sm);
+	}
+
+	& > header,
+	& > footer {
+		flex-direction: row;
+		align-items: center;
+	}
+
+	& > footer {
+		justify-content: flex-end;
+	}
+
+	& > header {
+		justify-content: space-between;
+	}
+}

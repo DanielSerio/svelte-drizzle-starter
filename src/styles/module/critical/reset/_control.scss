@@ -1,0 +1,22 @@
+button,
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='number'],
+select,
+textarea {
+	appearance: none;
+	outline: none;
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+	border: none;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='number'],
+textarea {
+	background: transparent;
+}

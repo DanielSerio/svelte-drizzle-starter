@@ -1,0 +1,15 @@
+.page-login,
+.page-register,
+.page-change-password {
+	#form {
+		flex: 1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.form {
+		width: 100%;
+		max-width: to-rem(324);
+		margin: 0 auto;
+	}
+}

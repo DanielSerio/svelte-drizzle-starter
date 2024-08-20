@@ -1,0 +1,7 @@
+@mixin theme-border() {
+	@for $i from 1 through 39 {
+		$light: ceil($i * 2.5);
+
+		--border-#{$light}: #{grey($light)};
+	}
+}

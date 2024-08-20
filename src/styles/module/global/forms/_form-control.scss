@@ -1,0 +1,17 @@
+.form-control {
+	display: flex;
+	flex-direction: column;
+
+	.asterisk {
+		color: danger(68);
+	}
+
+	.label {
+		font-size: to-rem($font-sm);
+	}
+
+	.ctrl-error {
+		color: danger(74);
+		font-size: to-rem($font-xs);
+	}
+}

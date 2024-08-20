@@ -11,3 +11,26 @@ $font-2xl: $font-basis * 6;
 $font-3xl: $font-basis * 7;
 $font-4xl: $font-basis * 8;
 $font-5xl: $font-basis * 9;
+
+$control-sizes: (
+	xs: (
+		height: 18,
+		font: 9
+	),
+	sm: (
+		height: 24,
+		font: 12
+	),
+	md: (
+		height: 36,
+		font: 18
+	),
+	lg: (
+		height: 48,
+		font: 24
+	),
+	xl: (
+		height: 60,
+		font: 30
+	)
+);

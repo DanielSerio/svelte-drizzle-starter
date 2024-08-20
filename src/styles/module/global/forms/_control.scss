@@ -1,0 +1,74 @@
+.ctrl {
+	position: relative;
+	display: inline-flex;
+	width: 100%;
+	border: 1px solid var(--border-38);
+	border-radius: to-rem(3);
+
+	&:hover {
+		border-color: var(--border-58);
+	}
+
+	&:has(.focus),
+	&:focus-within {
+		border-color: primary(70);
+		box-shadow: 0 0 0 1px primary(70);
+	}
+
+	input,
+	textarea,
+	select {
+		flex: 1;
+		width: 100%;
+	}
+
+	button {
+		position: absolute;
+		height: 100%;
+		aspect-ratio: 1;
+		top: 0;
+		right: 0;
+		border: none;
+		background: transparent;
+		cursor: pointer;
+		opacity: 0.6;
+	}
+
+	&:hover button {
+		opacity: 1;
+	}
+
+	&.xs,
+	&.sm,
+	&.md,
+	&.lg,
+	&.xl {
+		input,
+		select {
+			height: 100%;
+			padding: 0 1ch;
+		}
+	}
+
+	@each $name, $map in $control-sizes {
+		&.#{$name} {
+			height: to-rem(map-get($map, height));
+			font-size: to-rem(map-get($map, font));
+
+			&:has(button) {
+				input,
+				select {
+					padding-right: to-rem(map-get($map, height) + 3);
+				}
+			}
+		}
+	}
+}
+
+.error .ctrl {
+	&:has(.focus),
+	&:focus-within {
+		border-color: danger(70);
+		box-shadow: 0 0 0 1px danger(70);
+	}
+}

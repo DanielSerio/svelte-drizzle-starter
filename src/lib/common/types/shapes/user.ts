@@ -1,3 +1,4 @@
+import type { JwtPayload } from 'jsonwebtoken';
 import type { Shape, StampedUserOwnedKeys } from '../record-shape';
 
 export type UserLoginKeys = 'email' | 'password';
@@ -35,4 +36,12 @@ export type UserRecord = Shape<UserRecordKeys> & {
 	createdAt: Date;
 	updatedAt: Date | null;
 	email: string;
+};
+
+export type UserPayload = Omit<JwtPayload, 'sub'> & {
+	[k: string]: number | string | Date | null | undefined;
+	sub: number;
+	eml: string;
+	cdt: Date;
+	udt: Date | null;
 };

@@ -1,0 +1,46 @@
+button {
+	display: inline-flex;
+	align-items: center;
+	padding: 0 1.5ch;
+	gap: to-rem($basis * 5);
+	border-radius: to-rem(3);
+
+	&:disabled {
+		opacity: 0.4;
+		background-color: transparent;
+	}
+
+	&:not(:disabled) {
+		cursor: pointer;
+		opacity: 1;
+		box-shadow: 0 1px 8px -1px rgba(black, 0.3);
+
+		&[type='submit'] {
+			background: primary(30);
+
+			&:hover {
+				background: primary(40);
+			}
+		}
+	}
+
+	@each $name, $map in $control-sizes {
+		&.#{$name} {
+			height: to-rem(map-get($map, height));
+			font-size: to-rem(map-get($map, font));
+
+			&:has(button) {
+				input,
+				select {
+					padding-right: to-rem(map-get($map, height) + 3);
+				}
+			}
+		}
+	}
+
+	span.icon {
+		display: grid;
+		place-content: center;
+		line-height: 0;
+	}
+}

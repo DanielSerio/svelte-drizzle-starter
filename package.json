@@ -13,13 +13,18 @@
 		"test:unit": "vitest",
 		"lint": "prettier --check .",
 		"format": "prettier --write .",
-		"sass:critical:build": "sass ./src/styles/output/critical.scss:./static/critical.css"
+		"sass:critical:build": "sass ./src/styles/output/critical.scss:./static/critical.css",
+		"db:init": "drizzle-kit generate --config drizzle.config.ts",
+		"db:spec": "drizzle-kit spec --config drizzle.config.ts",
+		"db:push": "drizzle-kit push --config drizzle.config.ts",
+		"db:view": "drizzle-kit studio --config drizzle.config.ts"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.28.1",
 		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
+		"drizzle-kit": "^0.24.0",
 		"prettier": "^3.1.1",
 		"prettier-plugin-svelte": "^3.1.2",
 		"sass": "^1.77.8",

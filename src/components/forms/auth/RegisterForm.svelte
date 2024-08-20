@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Button from '$components/buttons/Button.svelte';
 	import { createFormState } from '$lib/client/hooks';
 	import { CommonValidators } from '$lib/common/validation';
 	import Form from '../Form.svelte';
@@ -41,6 +42,6 @@
 		Already have an account? <a href="/login">Log in here</a>
 	</p>
 	<svelte:fragment slot="footer">
-		<button type="submit" disabled={!$state.isValid}>Register Now!</button>
+		<Button type="submit" disabled={!$state.isValid}>Register Now!</Button>
 	</svelte:fragment>
 </Form>

@@ -1,0 +1,36 @@
+#layout {
+	$header-height: to-rem(66);
+	min-height: 100svh;
+	z-index: 0;
+
+	&,
+	& > #page,
+	#page #content {
+		display: flex;
+	}
+
+	&,
+	& > #page,
+	#page #content {
+		position: relative;
+	}
+
+	&,
+	& > #page,
+	#page #content {
+		flex-direction: column;
+	}
+
+	& > #page:has(#aside) {
+		flex-direction: row;
+	}
+
+	#layoutHeader,
+	#pageHeader {
+		min-height: $header-height;
+	}
+
+	&:has(#layoutHeader) {
+		padding-top: $header-height;
+	}
+}

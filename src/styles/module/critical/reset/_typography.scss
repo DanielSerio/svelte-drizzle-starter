@@ -1,0 +1,109 @@
+$sizes: (2xs, xs, sm, md, lg, xl, 2xl, 3xl, 4xl);
+
+html {
+	font-weight: 300;
+	font-optical-sizing: auto;
+}
+
+body,
+em {
+	font-style: normal;
+}
+
+body,
+p,
+h5,
+h6 {
+	font-size: var(--font-size);
+	line-height: var(--line-height);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+	font-weight: 300;
+}
+
+.font-mono {
+	font-family: 'Red Hat Mono', 'Courier New', Courier, monospace;
+}
+
+.font-display,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+em {
+	font-family:
+		'Red Hat Display',
+		system-ui,
+		-apple-system,
+		BlinkMacSystemFont,
+		'Segoe UI',
+		Roboto,
+		Oxygen,
+		Ubuntu,
+		Cantarell,
+		'Open Sans',
+		'Helvetica Neue',
+		sans-serif;
+}
+
+html,
+.font-normal {
+	font-family:
+		'Red Hat Text',
+		system-ui,
+		-apple-system,
+		BlinkMacSystemFont,
+		'Segoe UI',
+		Roboto,
+		Oxygen,
+		Ubuntu,
+		Cantarell,
+		'Open Sans',
+		'Helvetica Neue',
+		sans-serif;
+}
+
+@each $size in $sizes {
+	.text-#{$size} {
+		font-size: var(--font-#{$size});
+		line-height: var(--line-#{$size});
+	}
+}
+
+h4 {
+	font-size: var(--font-lg);
+	line-height: var(--line-lg);
+}
+h3 {
+	font-size: var(--font-xl);
+	line-height: var(--line-xl);
+}
+h2 {
+	font-size: var(--font-2xl);
+	line-height: var(--line-2xl);
+}
+h1 {
+	font-size: var(--font-3xl);
+	line-height: var(--line-3xl);
+}
+
+article {
+	margin: 0 auto;
+	max-width: calc(65ch + #{to-rem($font-lg)});
+	padding: to-rem($font-sm);
+}

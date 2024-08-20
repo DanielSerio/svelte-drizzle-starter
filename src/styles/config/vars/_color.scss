@@ -1,0 +1,30 @@
+// $blue: hsla(207, 80%, 50%, 1);
+// $green: hsla(104, 55%, 50%, 1);
+// $orange: hsla(37, 100%, 50%, 1);
+// $red: hsla(357, 70%, 50%, 1);
+// $purple: hsla(321, 50%, 50%, 1);
+// $grey: hsla(207, 3%, 50%, 1);
+$hue-map: (
+	primary: 207,
+	secondary: 321,
+	success: 104,
+	warning: 37,
+	danger: 357,
+	grey: 207
+);
+$min-sat-map: (
+	primary: 70,
+	secondary: 40,
+	success: 40,
+	warning: 90,
+	danger: 50,
+	grey: 3
+);
+$max-sat-map: (
+	primary: 80,
+	secondary: 50,
+	success: 55,
+	warning: 100,
+	danger: 70,
+	grey: 11
+);

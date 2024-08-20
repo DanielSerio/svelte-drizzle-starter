@@ -1,0 +1,17 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	position: static;
+	height: 0;
+	width: 100svw;
+	overflow: visible;
+}
+
+body {
+	margin: 0;
+}

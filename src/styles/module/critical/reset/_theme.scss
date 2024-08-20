@@ -1,0 +1,20 @@
+#layout {
+	color-scheme: var(--scheme);
+	background-color: var(--skin-10);
+	color: var(--skin-80);
+
+	::selection {
+		$hue: map-get($hue-map, primary);
+
+		background: hsl($hue, 100%, 45%);
+		color: white;
+	}
+
+	a {
+		color: #{primary(64)};
+
+		&:visited {
+			color: #{secondary(66)};
+		}
+	}
+}

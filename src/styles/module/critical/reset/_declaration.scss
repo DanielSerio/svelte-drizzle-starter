@@ -1,0 +1,6 @@
+:root {
+	@include theme();
+	@include typography();
+
+	font-size: var(--html-font-size);
+}

@@ -1,0 +1,43 @@
+@mixin _font-size($name) {
+	@if ($name == 2xs) {
+		--font-2xs: #{to-rem($font-2xs)};
+		--line-2xs: #{to-rem($font-lg)};
+	} @else if ($name == xs) {
+		--font-xs: #{to-rem($font-xs)};
+		--line-xs: #{to-rem($font-lg)};
+	} @else if ($name == sm) {
+		--font-sm: #{to-rem($font-sm)};
+		--line-sm: #{to-rem($font-lg)};
+	} @else if ($name == md) {
+		--font-md: #{to-rem($font-md)};
+		--line-md: #{to-rem($font-lg)};
+	} @else if ($name == lg) {
+		--font-lg: #{to-rem($font-lg)};
+		--line-lg: #{to-rem($font-xl)};
+	} @else if ($name == xl) {
+		--font-xl: #{to-rem($font-xl)};
+		--line-xl: #{to-rem($font-2xl)};
+	} @else if ($name == 2xl) {
+		--font-2xl: #{to-rem($font-2xl)};
+		--line-2xl: #{to-rem($font-3xl)};
+	} @else if ($name == 3xl) {
+		--font-3xl: #{to-rem($font-3xl)};
+		--line-3xl: #{to-rem($font-4xl)};
+	} @else if ($name == 4xl) {
+		--font-4xl: #{to-rem($font-4xl)};
+		--line-4xl: #{to-rem($font-5xl)};
+	}
+}
+
+@mixin typography {
+	$sizes: (2xs, xs, sm, md, lg, xl, 2xl, 3xl, 4xl);
+	$dec: calc($font-xs / 16);
+	$html-font-size: calc($dec * 100%);
+	--html-font-size: #{$html-font-size};
+	--font-size: #{to-rem($font-md)};
+	--line-height: #{to-rem($font-lg)};
+
+	@each $size in $sizes {
+		@include _font-size($size);
+	}
+}

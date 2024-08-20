@@ -1,0 +1,7 @@
+@mixin theme-skin() {
+	@for $i from 1 through 19 {
+		$light: $i * 5;
+
+		--skin-#{$light}: #{grey($light)};
+	}
+}

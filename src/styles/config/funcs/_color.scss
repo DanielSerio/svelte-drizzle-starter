@@ -1,0 +1,56 @@
+@function _saturation($name, $light) {
+	$min: map-get($min-sat-map, $name);
+	$max: map-get($max-sat-map, $name);
+
+	$diff: $max - $min;
+	$percent: calc((abs(50 - $light) * 2) / 100);
+	$amount: $percent * $diff;
+
+	@if ($name == grey) {
+		@return $min + $amount;
+	}
+
+	@return $max - $amount;
+}
+
+@function grey($light, $alpha: 1) {
+	$hue: map-get($hue-map, grey);
+	$saturation: _saturation(grey, $light);
+
+	@return hsla($hue, $saturation * 1%, $light * 1%, $alpha);
+}
+
+@function primary($light, $alpha: 1) {
+	$hue: map-get($hue-map, primary);
+	$saturation: _saturation(primary, $light);
+
+	@return hsla($hue, $saturation * 1%, $light * 1%, $alpha);
+}
+
+@function secondary($light, $alpha: 1) {
+	$hue: map-get($hue-map, secondary);
+	$saturation: _saturation(secondary, $light);
+
+	@return hsla($hue, $saturation * 1%, $light * 1%, $alpha);
+}
+
+@function success($light, $alpha: 1) {
+	$hue: map-get($hue-map, success);
+	$saturation: _saturation(success, $light);
+
+	@return hsla($hue, $saturation * 1%, $light * 1%, $alpha);
+}
+
+@function warning($light, $alpha: 1) {
+	$hue: map-get($hue-map, warning);
+	$saturation: _saturation(warning, $light);
+
+	@return hsla($hue, $saturation * 1%, $light * 1%, $alpha);
+}
+
+@function danger($light, $alpha: 1) {
+	$hue: map-get($hue-map, danger);
+	$saturation: _saturation(danger, $light);
+
+	@return hsla($hue, $saturation * 1%, $light * 1%, $alpha);
+}

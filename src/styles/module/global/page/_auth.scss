@@ -1,7 +1,9 @@
 .page-login,
 .page-register,
-.page-change-password {
-	#form {
+.page-change-password,
+.page-confirm-account {
+	#form,
+	#processing {
 		flex: 1;
 		display: flex;
 		justify-content: center;

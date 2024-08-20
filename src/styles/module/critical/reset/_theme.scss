@@ -3,6 +3,11 @@
 	background-color: var(--skin-10);
 	color: var(--skin-80);
 
+	#layoutHeader {
+		background-color: var(--skin-10);
+		border-bottom: 1px solid var(--border-18);
+	}
+
 	::selection {
 		$hue: map-get($hue-map, primary);
 

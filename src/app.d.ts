@@ -7,6 +7,12 @@ declare global {
 		// interface PageData {}
 		// interface PageState {}
 		// interface Platform {}
+
+		interface FormResponse {
+			name?: string;
+			success: boolean;
+			error?: string | null;
+		}
 	}
 }
 

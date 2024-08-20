@@ -1,7 +1,22 @@
 import type { Shape, ShapeKey } from '$lib/common/types';
 import { derived, writable } from 'svelte/store';
-import type { FormState, FormStateParams } from '../types';
+import type { FormState, FormStateParams, StateMap } from '../types';
 import { createErrorState, createStateMap } from '$lib/common/state';
+import { forEach } from '$lib/common/array';
+
+function getVisibleErrors<Keys extends ShapeKey>(
+	errors: StateMap<Keys, string | null>,
+	touched: StateMap<Keys, boolean>
+) {
+	const visibleErrors = createStateMap<Keys, string | null>(Object.keys(errors) as Keys[], null);
+	forEach(Object.entries(touched), ([name, value]) => {
+		if (value && errors[name]) {
+			(visibleErrors as { [k: string]: any })[name] = errors[name];
+		}
+	});
+
+	return visibleErrors;
+}
 
 export function createFormState<
 	RecordType extends Shape<Keys>,
@@ -34,7 +49,7 @@ export function createFormState<
 		return {
 			touched: tched,
 			isValid: Object.values(errors).filter((v) => v !== null).length === 0,
-			errors
+			errors: getVisibleErrors(errors, tched)
 		};
 	});
 

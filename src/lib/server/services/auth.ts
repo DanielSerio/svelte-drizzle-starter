@@ -3,9 +3,10 @@ import bc from 'bcryptjs';
 import { DB } from '../../../db';
 import { AccountConfirmationTable, ExpiredTokenTable, UserTable } from '../../../db/schema';
 import { eq } from 'drizzle-orm';
-import { sign, type Algorithm } from 'jsonwebtoken';
+import jwt, { type Algorithm } from 'jsonwebtoken';
 import { env } from '$env/dynamic/private';
 
+const { sign } = jwt;
 const { compareSync, hashSync } = bc;
 
 export function getAuthService() {
@@ -91,9 +92,11 @@ export function getAuthService() {
 
 	async function changePassword(userId: number, body: ChangePassword) {
 		try {
+			const hashed = await hashSync(body.password);
+
 			await DB.update(UserTable)
 				.set({
-					accountPass: body.password
+					accountPass: hashed
 				})
 				.where(eq(UserTable.userId, userId));
 		} catch (e) {
@@ -126,6 +129,10 @@ export function getAuthService() {
 					isConfirmed: true
 				})
 				.where(eq(AccountConfirmationTable.slug, slug));
+
+			return {
+				status: 200
+			};
 		} catch (e) {
 			return {
 				status: (e as any).status ?? 500,
@@ -134,12 +141,22 @@ export function getAuthService() {
 		}
 	}
 
+	async function tokenIsExpired(token: string) {
+		const result = await DB.query.ExpiredTokenTable.findFirst({
+			where: eq(ExpiredTokenTable.token, token)
+		});
+
+		if (result) return true;
+		return false;
+	}
+
 	return {
 		register,
 		login,
 		logout,
 		changePassword,
 		confirmAccount,
-		confirmAccountBySlug
+		confirmAccountBySlug,
+		tokenIsExpired
 	};
 }

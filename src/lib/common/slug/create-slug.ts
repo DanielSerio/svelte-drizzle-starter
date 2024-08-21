@@ -1,8 +1,17 @@
 export function createSlug(): string {
-	let pattern: string | null = crypto.getRandomValues(new Uint32Array(32)).join('').slice(0, 64);
-	const id = `${(+pattern).toString(36).slice(0, 32)}`;
+	let patternFirst: string | null = crypto
+		.getRandomValues(new Uint32Array(32))
+		.join('')
+		.slice(0, 280);
+	let patternSecond: string | null = crypto
+		.getRandomValues(new Uint32Array(32))
+		.join('')
+		.slice(0, 280);
+	const id = `${(+patternFirst).toString(16)}`.slice(0, 16);
+	const idTwo = `${(+patternSecond).toString(16)}`.slice(0, 16);
 
-	pattern = null;
+	patternFirst = null;
+	patternSecond = null;
 
-	return id.toUpperCase();
+	return `${id.toUpperCase()}${idTwo.toUpperCase()}`.slice(0, 32);
 }

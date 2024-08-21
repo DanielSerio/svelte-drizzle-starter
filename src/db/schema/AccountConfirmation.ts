@@ -7,9 +7,7 @@ import { UserTable } from './User';
 export const AccountConfirmationTable = mysqlTable('account_confirmations', {
 	userId: bigint('user_id', { mode: 'number' }).notNull().unique(),
 	expiresAt: timestamp('expires_at').notNull(),
-	slug: char('confirm_slug', { length: 32 })
-		.$defaultFn(() => createSlug())
-		.primaryKey(),
+	slug: char('confirm_slug', { length: 32 }).$defaultFn(createSlug).primaryKey(),
 	isConfirmed: boolean('is_confirmed').default(false)
 } satisfies Record<AccountConfirmationKeys, any>);
 
